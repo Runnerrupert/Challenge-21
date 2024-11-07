@@ -27,7 +27,8 @@ def place_order(menu):
     # Launch the store and present a greeting to the customer
     print("Welcome to the Generic Take Out Restaurant.")
 
-    while True:
+    place_order = True
+    while place_order:
         # Create a variable for the menu item number
         i = 1
 
@@ -44,24 +45,24 @@ def place_order(menu):
                 i += 1
 
         # Ask customer to input menu item number
-        menu_selection = input("Enter the number of the item you would like to order: ")
+        menu_selection = input("Type menu number: ")
 
         # Send the order list, menu selection, and menu items as arguments
-        update_order(order, menu_selection, menu_items)
+        order = update_order(order, menu_selection, menu_items)
 
         # Let the customer know if they should type 'n' or 'N' to quit
-        additional_items = input("Would you like to order another item? Type y or Y for yes, type n or N for No: ")
+        keep_ordering = input("Would you like to keep ordering? (N) to quit: ")
 
         # Conditional statement that checks for 'n' or 'N'
-        if additional_items == "n" or additional_items == "N":
-            print("Thank you for your order!")
+        if keep_ordering == "n" or keep_ordering == "N":
+            print("Thank you for your order.")
             # Contain the total price for each item in the order list
             prices_list = [item["Price"] * item["Quantity"] for item in order]
 
             # Get the order_total and rounds it to 2 decimal places
             order_total = round(sum(prices_list),2)
             # Break out of the loop
-            break
+            place_order = False
 
 
     # Return the order list and the order total
