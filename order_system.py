@@ -28,8 +28,6 @@ def place_order(menu):
     print("Welcome to the Generic Take Out Restaurant.")
 
     while True:
-        # User prompt for choosing what to order
-        prompt = input("What would you like to order?: ")
         # Create a variable for the menu item number
         i = 1
 
@@ -45,39 +43,29 @@ def place_order(menu):
                 # Update the menu selection number
                 i += 1
 
-        # TODO: Ask customer to input menu item number
+        # Asks customer to input menu item number
         menu_selection = input("Enter the number of the item you would like to order: ")
 
-        # TODO: Update the order list using the update_order function
+        # Sends the order list, menu selection, and menu items as arguments
         update_order(order, menu_selection, menu_items)
-        # TODO: Send the order list, menu selection, and menu items as arguments
+
+        # Lets the customer know if they should type 'n' or 'N' to quit
+        additional_items = input("Would you like to order another item? Type y or Y for yes, type n or N for No: ")
+
+        # Conditional statement that checks for 'n' or 'N'
+        if additional_items == "n" or "N":
+            print("Thank you for your order!")
+            # Contains the total price for each item in the order list
+            prices_list = [item["Price"] * item["Quantity"] for item in order]
+
+            # Gets the order_total and rounds it to 2 decimal places
+            order_total = round(sum(prices_list),2)
+            # Break out of the loop
+            break
 
 
-        # TODO: Ask the customer if they would like to order anything else
-        # TODO: Let the customer know if they should type 'n' or 'N' to quit
-
-
-        # TODO: Write a conditional statement that checks the user's input
-        # TODO: The conditional statement should check for 'n' or 'N'
-
-            # TODO: Write a print statement that thanks the customer for their order
-
-
-            # TODO: Use list comprehension to create a list called prices_list,
-            # TODO: which contains the total prices for each item in the order list:
-            # TODO: The total price for each item should multiply the price by quantity
-
-
-            # TODO: Create an order_total from the prices list using sum()
-            # TODO: Round the prices to 2 decimal places.
-
-
-            # TODO: Exit the ordering loop
-            # TODO: Either use a break statement or set the condition to False
-
-
-    # TODO: Return the order list and the order total
-
+    # Returns the order list and the order total
+    return order, order_total
 
 def update_order(order, menu_selection, menu_items):
     """
