@@ -27,32 +27,29 @@ def place_order(menu):
     # Launch the store and present a greeting to the customer
     print("Welcome to the Generic Take Out Restaurant.")
 
-    # TODO: Create a continuous while loop so customers can order multiple items
-        # TODO: Ask the customer what they want to order
-
+    while True:
+        # User prompt for choosing what to order
+        prompt = input("What would you like to order?: ")
         # Create a variable for the menu item number
+        i = 1
 
         # Print the menu header
         print_menu_heading()
 
-        # TODO: Loop through the menu dictionary
-        # TODO: Extract the food category and the options for each category
-
-            # TODO: Loop through the options for each food category
-            # TODO: Extract the meal and the price for each option
-
+        # Loops through the menu dictionary
+        for food_category, options in menu.items():
+            # Loop through the options for each food category
+            for meal, price in options.items():
                 # Print the menu item number, food category, meal, and price
-                # TODO: Only if you used different variable names
-                # TODO: Update the variable names in the following function
                 print_menu_line(i, food_category, meal, price)
-
                 # Update the menu selection number
                 i += 1
 
         # TODO: Ask customer to input menu item number
-
+        menu_selection = input("Enter the number of the item you would like to order: ")
 
         # TODO: Update the order list using the update_order function
+        update_order(order, menu_selection, menu_items)
         # TODO: Send the order list, menu selection, and menu items as arguments
 
 
@@ -143,7 +140,7 @@ def print_itemized_receipt(receipt):
     # TODO: Loop through the items in the customer's receipt
         
         # TODO Store the dictionary items as variables
-
+        
         # TODO: Print the receipt line using the print_receipt_line function
         # TODO: Send the item name, price, and quantity as separate arguments
 
